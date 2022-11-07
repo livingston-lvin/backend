@@ -1,0 +1,15 @@
+1. Dish Table :- Dishid(PK) , Name, Price , image
+
+
+2. Stock Table :- Stockid(PK), Name, Qty
+
+
+3. Ingredient Table :- IngredientID (PK) , 
+	Dishid (FK), StockId(FK), Qty Used
+
+
+4. Bill Table :- BillID(PK) , Table no , Amount
+
+
+5. Bill Details Table :- Billdetailsid(PK), BillID (FK), 
+	Dishid(FK), Qty Ordered, Price , Amount
