@@ -37,14 +37,14 @@ public class BackendApplication {
 
 	@PostConstruct
 	public void init() {
-//		List<Stock> stocks = IntStream.rangeClosed(1, 100)
-//				.mapToObj(obj -> new Stock("Stock Name" + obj, new Random().nextInt(100))).collect(Collectors.toList());
-//
-//		sr.saveAll(stocks);
-//		List<Dish> dishes = IntStream.rangeClosed(1, 100)
-//				.mapToObj(obj -> new Dish("Dish " + obj, new Random().nextInt(500), "img_" + obj))
-//				.collect(Collectors.toList());
-//		dr.saveAll(dishes);
+		List<Stock> stocks = IntStream.rangeClosed(1, 100)
+				.mapToObj(obj -> new Stock("Stock Name" + obj, new Random().nextInt(100))).collect(Collectors.toList());
+
+		sr.saveAll(stocks);
+		List<Dish> dishes = IntStream.rangeClosed(1, 100)
+				.mapToObj(obj -> new Dish("Dish " + obj, new Random().nextInt(500), "img_" + obj))
+				.collect(Collectors.toList());
+		dr.saveAll(dishes);
 //		List<Item> items = IntStream.rangeClosed(1, 10)
 //				.mapToObj(i -> new Item(sr.findById(new Random().nextInt(50)).get(), new Random().nextInt(30)))
 //				.collect(Collectors.toList());
