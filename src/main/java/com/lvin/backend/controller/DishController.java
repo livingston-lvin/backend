@@ -48,18 +48,18 @@ public class DishController {
 		return new ResponseEntity<Dish>(updatedDish, HttpStatus.OK);
 	}
 
-	@GetMapping("{dishId}")
-	public Dish getDish(@PathVariable int dishId) {
-		Optional<Dish> dish = rep.findById(dishId);
+	@GetMapping("{id}")
+	public Dish getDish(@PathVariable int id) {
+		Optional<Dish> dish = rep.findById(id);
 		Dish d = dish.get();
 		return d;
 	}
 
-	@DeleteMapping("{dishId}")
-	public HttpStatus deleteDish(@PathVariable int dishId) {
+	@DeleteMapping("{id}")
+	public HttpStatus deleteDish(@PathVariable int id) {
 		try {
-			rep.findById(dishId).get();
-			rep.deleteById(dishId);
+			rep.findById(id).get();
+			rep.deleteById(id);
 			return HttpStatus.OK;
 		} catch (Exception e) {
 			return HttpStatus.BAD_REQUEST;
@@ -74,10 +74,16 @@ public class DishController {
 		else
 			return dishes;
 	}
-	
+
 	@GetMapping("get/{offset}/{size}")
-	public Page<Dish> getDishByNo(@PathVariable int offset,@PathVariable int size){
+	public Page<Dish> getDishByNo(@PathVariable int offset, @PathVariable int size) {
 		Page<Dish> dishes = rep.findAll(PageRequest.of(offset, size));
 		return dishes;
+	}
+
+	@GetMapping("getCount")
+	public Long getDishCount() {
+		long count = rep.count();
+		return count;
 	}
 }

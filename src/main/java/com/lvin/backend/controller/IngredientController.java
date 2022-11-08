@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lvin.backend.model.Ingredient;
-import com.lvin.backend.model.Item;
+import com.lvin.backend.model.IngredientItem;
 import com.lvin.backend.repository.IngredientRepository;
 import com.lvin.backend.repository.ItemRepository;
 
@@ -39,9 +38,9 @@ public class IngredientController {
 	}
 
 	@PutMapping
-	public ResponseEntity<Ingredient> update(@RequestBody Ingredient ingredient) {
-		Ingredient updatedIngredient = rep.save(ingredient);
-		return new ResponseEntity<Ingredient>(updatedIngredient, HttpStatus.OK);
+	public HttpStatus update(@RequestBody Ingredient ingredient) {
+		rep.save(ingredient);
+		return HttpStatus.OK;
 	}
 
 	@GetMapping("{ingredientId}")
@@ -63,7 +62,7 @@ public class IngredientController {
 
 	@PostMapping
 	public Ingredient create(@RequestBody Ingredient ingredient) {
-		List<Item> items = ingredient.getItem();
+		List<IngredientItem> items = ingredient.getItem();
 		ir.saveAll(items);
 		Ingredient ii = rep.save(ingredient);
 		return ii;

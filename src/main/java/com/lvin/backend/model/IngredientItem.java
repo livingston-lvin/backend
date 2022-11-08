@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Item {
+public class IngredientItem {
 
 	@Id
 	@GeneratedValue
@@ -21,7 +21,7 @@ public class Item {
 	@OneToOne
 	private Stock stock;
 	private int quantityUsed;
-	public Item(Stock stock, int quantityUsed) {
+	public IngredientItem(Stock stock, int quantityUsed) {
 		super();
 		this.stock = stock;
 		this.quantityUsed = quantityUsed;

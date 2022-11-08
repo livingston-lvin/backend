@@ -24,4 +24,12 @@ public class BillItem {
 	@OneToOne
 	private Dish dish;
 
+	public BillItem(float price, int quantity, float amount, Dish dish) {
+		super();
+		this.price = price;
+		this.quantity = quantity;
+		this.amount = amount;
+		this.dish = dish;
+	}
+
 }

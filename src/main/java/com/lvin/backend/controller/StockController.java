@@ -49,18 +49,18 @@ public class StockController {
 		return new ResponseEntity<Stock>(updatedStock, HttpStatus.OK);
 	}
 
-	@GetMapping("{stockId}")
-	public Stock getDish(@PathVariable int stockId) {
-		Optional<Stock> stock = rep.findById(stockId);
+	@GetMapping("{id}")
+	public Stock getDish(@PathVariable int id) {
+		Optional<Stock> stock = rep.findById(id);
 		Stock s = stock.get();
 		return s;
 	}
 
-	@DeleteMapping("{stockId}")
-	public HttpStatus deleteDish(@PathVariable int stockId) {
+	@DeleteMapping("{id}")
+	public HttpStatus deleteDish(@PathVariable int id) {
 		try {
-			rep.findById(stockId).get();
-			rep.deleteById(stockId);
+			rep.findById(id).get();
+			rep.deleteById(id);
 			return HttpStatus.OK;
 		} catch (Exception e) {
 			return HttpStatus.BAD_REQUEST;
@@ -80,5 +80,11 @@ public class StockController {
 	public Page<Stock> getStockByNo(@PathVariable int offset,@PathVariable int size){
 		Page<Stock> stocks = rep.findAll(PageRequest.of(offset, size));
 		return stocks;
+	}
+	
+	@GetMapping("getCount")
+	public Long getStockCount() {
+		long count = rep.count();
+		return count;
 	}
 }
