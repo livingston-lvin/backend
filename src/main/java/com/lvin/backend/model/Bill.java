@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Bill {
-
+ 
 	@Id
 	@GeneratedValue
 	private int id;

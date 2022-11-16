@@ -38,9 +38,9 @@ public class IngredientController {
 	}
 
 	@PutMapping
-	public HttpStatus update(@RequestBody Ingredient ingredient) {
-		rep.save(ingredient);
-		return HttpStatus.OK;
+	public Ingredient update(@RequestBody Ingredient ingredient) {
+		Ingredient updated = rep.save(ingredient);
+		return updated;
 	}
 
 	@GetMapping("{ingredientId}")
